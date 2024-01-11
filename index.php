@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         </a>
     </div>
     <div id="table_container">
-        <table>
+        <table id="tabla">
             <thead>
                 <tr>
                     <th>NOMBRE DE ACCION</th>
@@ -89,5 +89,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tfoot>
         </table>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tabla = document.getElementById('tabla');
+        if (tabla.rows.length === 2) {
+            var fila = tabla.insertRow(0);
+            var celda = fila.insertCell(0);
+            celda.colSpan = 5;
+            celda.innerHTML = "No hay registros disponibles.";
+        }
+    });
+</script>
     </body>
 </html>
