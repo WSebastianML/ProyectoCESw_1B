@@ -1,3 +1,13 @@
+<?php
+require 'conexion.php';
+require 'clases/Accion.php';
+$db = conectarDB();
+use Clases\Accion;
+Accion::setDB($db);
+
+$acciones = Accion::listar();
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -33,27 +43,15 @@
                 </tr>
             </thead>
             <tbody>
+                <?php foreach( $acciones as $accion ): ?>
                 <tr>
-                    <td>AAPL</td>
-                    <td>10/1/2023</td>
-                    <td>150</td>
-                    <td>10</td>
-                    <td>1500</td>
+                    <td><?php echo $accion->nombre; ?></td>
+                    <td><?php echo $accion->fecha; ?></td>
+                    <td><?php echo $accion->precio; ?></td>
+                    <td><?php echo $accion->cantidad; ?></td>
+                    <td><?php echo $accion->costoTotal; ?></td>
                 </tr>
-                <tr>
-                    <td>MSFT</td>
-                    <td>15/2/2023</td>
-                    <td>250</td>
-                    <td>5</td>
-                    <td>1250</td>
-                </tr>
-                <tr>
-                    <td>TSLA</td>
-                    <td>20/3/2023</td>
-                    <td>700</td>
-                    <td>2</td>
-                    <td>1400</td>
-                </tr>
+                <?php endforeach; ?>
             </tbody>
             <tfoot>
                 <tr>
