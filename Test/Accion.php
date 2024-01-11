@@ -1,5 +1,4 @@
 <?php
-namespace Clases;
 
 class Accion{
     protected static $db;
@@ -18,9 +17,12 @@ class Accion{
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? null;
         $this->fecha = $args['fecha'] ?? '';
-        $this->precio = $args['precio'] ?? '';
-        $this->cantidad = $args['cantidad'] ?? '';
-        $this->costoTotal = $args['costoTotal'] ?? '';
+        $this->precio = $args['precio'] ?? 0;
+        $this->cantidad = $args['cantidad'] ?? 0;
+        $this->calcularTotal();
+    }
+    public function setID($id){
+        $this->id = $id;
     }
 
     public function getId(){
@@ -157,8 +159,9 @@ class Accion{
         }
     }
     public function calcularTotal(){
-        return floatval($this->cantidad) * floatval($this->precio);
+        $this->costoTotal = $this->cantidad * $this->precio;
     }
+
 
 }
 
