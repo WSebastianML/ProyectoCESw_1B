@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <td><?php echo $accion->getCantidad(); ?></td>
                     <td><?php echo $accion->getCostoTotal(); ?></td>
                     <td>
-                        <form method="POST">
+                        <form method="POST" id="formBorrar">
                             <input type="hidden" name="id" value="<?php echo $accion->getId(); ?>">
                             <input type="hidden" name="tipo" value="accion">
                             <input type="submit" class="boton-rojo-block" value="Eliminar">
@@ -90,16 +90,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         </table>
     </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var tabla = document.getElementById('tabla');
-        if (tabla.rows.length === 2) {
-            var fila = tabla.insertRow(0);
-            var celda = fila.insertCell(0);
-            celda.colSpan = 5;
-            celda.innerHTML = "No hay registros disponibles.";
-        }
-    });
-</script>
+    <script src="js/app.js"></script>
     </body>
 </html>
