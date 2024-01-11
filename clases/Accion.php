@@ -9,14 +9,16 @@ class Accion{
     private $cantidad;
     private $costoTotal;
 
+    protected static $columnasDB = ['nombre', 'fecha', 'precio', 'cantidad', 'costoTotal'];
+
 
     public function __construct($args = [])
     {
-        $this->id = $args['nombre'] ?? null;
-        $this->titulo = $args['fecha'] ?? '';
+        $this->nombre = $args['nombre'] ?? null;
+        $this->fecha = $args['fecha'] ?? '';
         $this->precio = $args['precio'] ?? '';
-        $this->imagen = $args['cantidad'] ?? '';
-        $this->descripcion = $args['costoTotal'] ?? '';
+        $this->cantidad = $args['cantidad'] ?? '';
+        $this->costoTotal = $args['costoTotal'] ?? '';
     }
 
     public function getNombre() {
@@ -49,6 +51,22 @@ class Accion{
         return $resultado;
     }
 
+    public function crear() {
+        $atributos = $this->sanitizarAtributos();
+
+        $query = " INSERT INTO Accion ( ";
+        $query .= join(', ', array_keys($atributos));
+        $query .= " ) VALUES (' "; 
+        $query .= join("', '", array_values($atributos));
+        $query .= " ') ";
+
+        $resultado = self::$db->query($query);
+
+        if($resultado) {
+            header('Location: index.php');
+        }
+    }
+
     public static function consultarSQL($query){
         $resultado = self::$db->query($query);
         $array = [];
@@ -68,6 +86,24 @@ class Accion{
         }
 
         return $objeto;
+    }
+
+    public function atributos() {
+        $atributos = [];
+        foreach(static::$columnasDB as $columna) {
+            if($columna === 'id') continue;
+            $atributos[$columna] = $this->$columna;
+        }
+        return $atributos;
+    }
+
+    public function sanitizarAtributos() {
+        $atributos = $this->atributos();
+        $sanitizado = [];
+        foreach($atributos as $key => $value ) {
+            $sanitizado[$key] = self::$db->escape_string($value);
+        }
+        return $sanitizado;
     }
 
 

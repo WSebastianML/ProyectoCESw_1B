@@ -1,7 +1,5 @@
 <?php
-require 'conexion.php';
-require 'clases/Accion.php';
-$db = conectarDB();
+require 'app.php';
 use Clases\Accion;
 Accion::setDB($db);
 
