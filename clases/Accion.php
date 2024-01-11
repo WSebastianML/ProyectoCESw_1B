@@ -3,22 +3,28 @@ namespace Clases;
 
 class Accion{
     protected static $db;
+    private $id;
     private $nombre;
     private $fecha;
     private $precio;
     private $cantidad;
     private $costoTotal;
 
-    protected static $columnasDB = ['nombre', 'fecha', 'precio', 'cantidad', 'costoTotal'];
+    protected static $columnasDB = ['id', 'nombre', 'fecha', 'precio', 'cantidad', 'costoTotal'];
 
 
     public function __construct($args = [])
     {
+        $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? null;
         $this->fecha = $args['fecha'] ?? '';
         $this->precio = $args['precio'] ?? '';
         $this->cantidad = $args['cantidad'] ?? '';
         $this->costoTotal = $args['costoTotal'] ?? '';
+    }
+
+    public function getId(){
+        return $this->id;
     }
 
     public function getNombre() {
@@ -51,6 +57,14 @@ class Accion{
         return $resultado;
     }
 
+    public static function buscar($id) {
+        $query = "SELECT * FROM Accion WHERE id = ${id}";
+
+        $resultado = self::consultarSQL($query);
+
+        return array_shift( $resultado ) ;
+    }
+
     public function crear() {
         $atributos = $this->sanitizarAtributos();
 
@@ -63,6 +77,14 @@ class Accion{
         $resultado = self::$db->query($query);
 
         if($resultado) {
+            header('Location: index.php');
+        }
+    }
+
+    public function eliminar() {
+        $query = "DELETE FROM Accion WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
+        $resultado = self::$db->query($query);
+        if($resultado){
             header('Location: index.php');
         }
     }

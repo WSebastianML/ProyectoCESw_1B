@@ -5,6 +5,24 @@ Accion::setDB($db);
 
 $acciones = Accion::listar();
 
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $tipo = $_POST['tipo'];
+
+
+    // peticiones validas
+    if($tipo == 'accion') {
+        $id = $_POST['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        $vendedor = Accion::buscar($id);
+        if($vendedor){
+            $vendedor->eliminar();
+        }
+        
+    }
+}
+
 ?>
 <html>
     <head>
@@ -38,6 +56,7 @@ $acciones = Accion::listar();
                     <th>PRECIO DE COMPRA POR ACCION</th>
                     <th>CANTIDAD DE ACCIONES</th>
                     <th>COSTO TOTAL DE COMPRA</th>
+                    <th>ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +67,15 @@ $acciones = Accion::listar();
                     <td><?php echo $accion->getPrecio(); ?></td>
                     <td><?php echo $accion->getCantidad(); ?></td>
                     <td><?php echo $accion->getCostoTotal(); ?></td>
+                    <td>
+                        <form method="POST">
+                            <input type="hidden" name="id" value="<?php echo $accion->getId(); ?>">
+                            <input type="hidden" name="tipo" value="accion">
+                            <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        
+                        <a href="actualizar.php?id=<?php echo $accion->getId(); ?>">Actualizar</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
