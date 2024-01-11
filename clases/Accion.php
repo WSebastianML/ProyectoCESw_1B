@@ -89,6 +89,27 @@ class Accion{
         }
     }
 
+    public function actualizar() {
+
+        $atributos = $this->sanitizarAtributos();
+
+        $valores = [];
+        foreach($atributos as $key => $value) {
+            $valores[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE Accion SET ";
+        $query .=  join(', ', $valores );
+        $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " LIMIT 1 "; 
+
+        $resultado = self::$db->query($query);
+
+        if($resultado) {
+            header('Location: index.php');
+        }
+    }
+
     public static function consultarSQL($query){
         $resultado = self::$db->query($query);
         $array = [];
@@ -126,6 +147,14 @@ class Accion{
             $sanitizado[$key] = self::$db->escape_string($value);
         }
         return $sanitizado;
+    }
+
+    public function sincronizar($args=[]) { 
+        foreach($args as $key => $value) {
+          if(property_exists($this, $key) && !is_null($value)) {
+            $this->$key = $value;
+          }
+        }
     }
 
 
