@@ -45,11 +45,11 @@ $acciones = Accion::listar();
             <tbody>
                 <?php foreach( $acciones as $accion ): ?>
                 <tr>
-                    <td><?php echo $accion->nombre; ?></td>
-                    <td><?php echo $accion->fecha; ?></td>
-                    <td><?php echo $accion->precio; ?></td>
-                    <td><?php echo $accion->cantidad; ?></td>
-                    <td><?php echo $accion->costoTotal; ?></td>
+                    <td><?php echo $accion->getNombre(); ?></td>
+                    <td><?php echo $accion->getFecha(); ?></td>
+                    <td><?php echo $accion->getPrecio(); ?></td>
+                    <td><?php echo $accion->getCantidad(); ?></td>
+                    <td><?php echo $accion->getCostoTotal(); ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

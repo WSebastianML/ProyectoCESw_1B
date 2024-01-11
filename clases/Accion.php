@@ -9,12 +9,34 @@ class Accion{
     private $cantidad;
     private $costoTotal;
 
-    public function __construct($nombre, $fecha, $precio, $cantidad, $costoTotal){
-        $this->$nombre = $nombre;
-        $this->$fecha = $fecha;
-        $this->$precio = $precio;
-        $this->$cantidad = $cantidad;
-        $this->$costoTotal = $costoTotal;
+
+    public function __construct($args = [])
+    {
+        $this->id = $args['nombre'] ?? null;
+        $this->titulo = $args['fecha'] ?? '';
+        $this->precio = $args['precio'] ?? '';
+        $this->imagen = $args['cantidad'] ?? '';
+        $this->descripcion = $args['costoTotal'] ?? '';
+    }
+
+    public function getNombre() {
+        return $this->nombre;
+    }
+
+    public function getFecha(){
+        return $this->fecha;
+    }
+
+    public function getPrecio(){
+        return $this->precio;
+    }
+
+    public function getCantidad(){
+        return $this->cantidad;
+    }
+
+    public function getCostoTotal(){
+        return $this->costoTotal;
     }
 
     public static function setDB($baseDatos){
