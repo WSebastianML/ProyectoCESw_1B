@@ -39,13 +39,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <div class="form-container">
         <form class="form-style" method="POST">
             <label class="form_label" for="">Nombre de Accion:</label>
-            <input class="form_input" type="text" name="accion[nombre]" value="<?php echo $accion->getNombre(); ?>">
+            <input class="form_input" type="text" name="accion[nombre]" value="<?php echo $accion->getNombre(); ?>" required>
             <label class="form_label" for="">Fecha: </label>
-            <input class="form_input" type="date" name="accion[fecha]">
+            <input class="form_input" type="date" name="accion[fecha]" required>
             <label class="form_label" for="">Precio por Accion:</label>
-            <input class="form_input" type="number" name="accion[precio]" step="0.01" inputmode="decimal" value="<?php echo $accion->getPrecio(); ?>">
+            <input class="form_input" type="number" name="accion[precio]" step="0.01" inputmode="decimal" value="<?php echo $accion->getPrecio(); ?>" required>
             <label class="form_label" for="">Cantidad de Acciones:</label>
-            <input class="form_input" type="number" name="accion[cantidad]" value="<?php echo $accion->getCantidad(); ?>">
+            <input class="form_input" type="number" name="accion[cantidad]" value="<?php echo $accion->getCantidad(); ?>" required>
             <input class="button submit_button" type="submit" value="Agregar Compra">
             <a href="index.php">Cancelar</a>
         </form>

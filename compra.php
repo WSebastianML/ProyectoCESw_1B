@@ -35,13 +35,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <div class="form-container">
         <form action="compra.php" class="form-style" method="POST">
             <label class="form_label" for="">Nombre de Accion:</label>
-            <input class="form_input" type="text" name="accion[nombre]" placeholder="Ingrese nombre...">
+            <input class="form_input" type="text" name="accion[nombre]" placeholder="Ingrese nombre..." required>
             <label class="form_label" for="">Fecha: </label>
-            <input class="form_input" type="date" name="accion[fecha]">
+            <input class="form_input" type="date" name="accion[fecha]" required>
             <label class="form_label" for="">Precio por Accion:</label>
-            <input class="form_input" type="number" name="accion[precio]" step="0.01" inputmode="decimal" placeholder="Ingrese el precio por accion">
+            <input class="form_input" type="number" name="accion[precio]" step="0.01" inputmode="decimal" placeholder="Ingrese el precio por accion" required>
             <label class="form_label" for="">Cantidad de Acciones:</label>
-            <input class="form_input" type="number" name="accion[cantidad]" placeholder="Ingrese la cantidad de acciones">
+            <input class="form_input" type="number" name="accion[cantidad]" placeholder="Ingrese la cantidad de acciones" required>
             <input class="button submit_button" type="submit" value="Agregar Compra">
             <a href="index.php">Cancelar</a>
         </form>
