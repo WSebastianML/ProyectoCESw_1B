@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <td><?php echo $accion->getCantidad(); ?></td>
                     <td><?php echo $accion->getCostoTotal(); ?></td>
                     <td>
-                        <form id="boton-eliminar" method="POST" id="formBorrar">
+                        <form id="formBorrar" class="boton-eliminar" method="POST">
                             <input type="hidden" name="id" value="<?php echo $accion->getId(); ?>">
                             <input type="hidden" name="tipo" value="accion">
                             <input type="submit" class="boton-rojo-block" value="Eliminar">

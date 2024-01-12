@@ -232,7 +232,7 @@ td {
     border: 1px solid #163020;
 }
 
-#boton-eliminar input{
+#formBorrar input{
     background-color: #163020;
     padding: 5px 20px;
     margin: 2px 0px;
@@ -242,7 +242,7 @@ td {
     transition: all 0.4s;
 }
 
-#boton-eliminar:hover input{
+#formBorrar:hover input{
     background-color: #25332a;
 }
 
