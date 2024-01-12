@@ -109,6 +109,25 @@ body::-webkit-scrollbar {
     flex-direction: column;
 }
 
+.form-style a{
+    background-color: #b61018;
+    border: 0px solid;
+    border-radius: 20px;
+    height: 25px;
+    align-self: center;
+    width: 50%;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-style a:hover{
+    background-color: #f8030f;
+}
+
 .form_label {
     margin-bottom: 8px;
     font-weight: bold;

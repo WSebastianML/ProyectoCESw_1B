@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <label class="form_label" for="">Cantidad de Acciones:</label>
             <input class="form_input" type="number" name="accion[cantidad]" placeholder="Ingrese la cantidad de acciones">
             <input class="button submit_button" type="submit" value="Agregar Compra">
-            <a href="index.php" class="button cancel-button">Cancelar</a>
+            <a href="index.php">Cancelar</a>
         </form>
     </div>
 </body>

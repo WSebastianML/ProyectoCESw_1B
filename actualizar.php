@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <label class="form_label" for="">Cantidad de Acciones:</label>
             <input class="form_input" type="number" name="accion[cantidad]" value="<?php echo $accion->getCantidad(); ?>">
             <input class="button submit_button" type="submit" value="Agregar Compra">
-            <a href="index.php" class="button cancel-button">Cancelar</a>
+            <a href="index.php">Cancelar</a>
         </form>
     </div>
 </body>
