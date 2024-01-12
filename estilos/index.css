@@ -84,7 +84,7 @@ body::-webkit-scrollbar {
 }
 
 .operation .operation-name {
-    font-size: calc(0.60rem + 0.35vw);
+    font-size: calc(0.50rem + 0.35vw);
     margin-top: 5px;
 }
 
@@ -230,6 +230,35 @@ td {
     border: none;
     height: 30px;
     border: 1px solid #163020;
+}
+
+#boton-eliminar input{
+    background-color: #163020;
+    padding: 5px 20px;
+    margin: 2px 0px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+#boton-eliminar:hover input{
+    background-color: #25332a;
+}
+
+#boton-actualizar{
+    background-color: #163020;
+    font-size: 0.8rem;
+    margin: 2px 0px;
+    padding: 5px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+#boton-actualizar:hover{
+    background-color: #25332a;
 }
 
 table tfoot {

@@ -68,13 +68,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <td><?php echo $accion->getCantidad(); ?></td>
                     <td><?php echo $accion->getCostoTotal(); ?></td>
                     <td>
-                        <form method="POST" id="formBorrar">
+                        <form id="boton-eliminar" method="POST" id="formBorrar">
                             <input type="hidden" name="id" value="<?php echo $accion->getId(); ?>">
                             <input type="hidden" name="tipo" value="accion">
                             <input type="submit" class="boton-rojo-block" value="Eliminar">
                         </form>
-                        
-                        <a href="actualizar.php?id=<?php echo $accion->getId(); ?>">Actualizar</a>
+                        <button id="boton-actualizar" onclick="window.location.href='actualizar.php?id=<?php echo $accion->getId(); ?>';" >Actualizar</button>
                     </td>
                 </tr>
                 <?php endforeach; ?>
