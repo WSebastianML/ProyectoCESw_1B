@@ -21,3 +21,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function(){
+    var botonOrdenar = document.getElementById('btnOrdenar');
+    botonOrdenar.addEventListener('click', function(){
+        var tabla = document.getElementById("tabla");
+        var tbody = tabla.getElementsByTagName("tbody")[0];
+        var rows = [].slice.call(tbody.getElementsByTagName("tr"));
+
+        // Obtiene el índice de la columna seleccionada
+        var index = document.getElementById("selectColumna").value;
+
+        // Ordena las filas basándose en el contenido de la columna seleccionada
+        rows.sort(function(a, b) {
+            var textA = a.getElementsByTagName("td")[index].textContent;
+            var textB = b.getElementsByTagName("td")[index].textContent;
+            return textA.localeCompare(textB);
+        });
+
+        // Elimina las filas actuales de la tabla
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+        }
+
+        // Vuelve a agregar las filas ordenadas
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    });
+});

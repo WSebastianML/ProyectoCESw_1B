@@ -47,7 +47,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             <span class="operation-name">Agregar Compra</span>
         </a>
     </div>
+
+    
     <div id="table_container">
+
+        <div id="ordenar">
+            <select id="selectColumna">
+                <option value="0">Nombre de Acción</option>
+                <option value="1">Fecha de Compra</option>
+                <option value="2">Precio de Compra por Acción</option>
+                <option value="3">Cantidad de Acciones</option>
+                <option value="4">Costo Total de Compra</option>
+                <option value="5">Cambio</option>
+                <option value="6">Ganancia/Pérdida</option>
+            </select>
+
+            <button id="btnOrdenar" class="button">Ordenar</button>
+        </div>
+
         <table id="tabla">
             <thead>
                 <tr>
@@ -84,7 +101,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="8">
                         <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a
                                 href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
                     </td>
