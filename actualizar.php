@@ -14,6 +14,8 @@ $accion = Accion::buscar($id);
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $costoTotal = floatval($_POST['accion']['precio']) * floatval($_POST['accion']['cantidad']);
     $_POST['accion']['costoTotal'] = strval($costoTotal);
+    $ganancia = floatval($_POST['accion']['costoTotal']) * (floatval($_POST['accion']['cambio'])/100) + floatval($_POST['accion']['costoTotal']);
+    $_POST['accion']['ganancia'] = strval($ganancia);
     $args = $_POST['accion'];
     $accion->sincronizar($args);
     $accion->actualizar();
@@ -46,6 +48,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input class="form_input" type="number" name="accion[precio]" step="0.01" inputmode="decimal" value="<?php echo $accion->getPrecio(); ?>" required>
             <label class="form_label" for="">Cantidad de Acciones:</label>
             <input class="form_input" type="number" name="accion[cantidad]" value="<?php echo $accion->getCantidad(); ?>" required>
+            <label class="form_label" for="">Cambio: </label>
+            <input class="form_input" type="number" name="accion[cambio]" value="<?php echo $accion->getCambio(); ?>" required>
             <input class="button submit_button" type="submit" value="Agregar Compra">
             <a href="index.php">Cancelar</a>
         </form>

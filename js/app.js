@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tabla.rows.length === 2) {
         var fila = tabla.insertRow(0);
         var celda = fila.insertCell(0);
-        celda.colSpan = 6; 
+        celda.colSpan = 8; 
         celda.innerHTML = "No hay registros disponibles.";
     }
 });

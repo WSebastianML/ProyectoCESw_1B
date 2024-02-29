@@ -56,6 +56,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>PRECIO DE COMPRA POR ACCION</th>
                     <th>CANTIDAD DE ACCIONES</th>
                     <th>COSTO TOTAL DE COMPRA</th>
+                    <th>CAMBIO</th>
+                    <th>GANANCIA/PÉRDIDA</th>
                     <th>ACCIONES</th>
                 </tr>
             </thead>
@@ -67,6 +69,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <td><?php echo $accion->getPrecio(); ?></td>
                     <td><?php echo $accion->getCantidad(); ?></td>
                     <td><?php echo $accion->getCostoTotal(); ?></td>
+                    <td><?php echo $accion->getCambio(); ?>%</td>
+                    <td><?php echo $accion->getGanancia(); ?></td>
                     <td>
                         <form id="formBorrar" class="boton-eliminar" method="POST">
                             <input type="hidden" name="id" value="<?php echo $accion->getId(); ?>">

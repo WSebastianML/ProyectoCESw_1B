@@ -7,6 +7,8 @@ $accion = new Accion;
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $costoTotal = floatval($_POST['accion']['precio']) * floatval($_POST['accion']['cantidad']);
     $_POST['accion']['costoTotal'] = strval($costoTotal);
+    $ganancia = floatval($_POST['accion']['costoTotal']) * (floatval($_POST['accion']['cambio'])/100) + floatval($_POST['accion']['costoTotal']);
+    $_POST['accion']['ganancia'] = strval($ganancia);
     $accion = new Accion($_POST['accion']);
     echo "<pre>";
     var_dump($accion);
@@ -42,6 +44,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input class="form_input" type="number" name="accion[precio]" step="0.01" inputmode="decimal" placeholder="Ingrese el precio por accion" required>
             <label class="form_label" for="">Cantidad de Acciones:</label>
             <input class="form_input" type="number" name="accion[cantidad]" placeholder="Ingrese la cantidad de acciones" required>
+            <label class="form_label" for="">Cambio: </label>
+            <input class="form_input" type="number" name="accion[cambio]" placeholder="Ingrese el porcentaje de cambio" required>
             <input class="button submit_button" type="submit" value="Agregar Compra">
             <a href="index.php">Cancelar</a>
         </form>

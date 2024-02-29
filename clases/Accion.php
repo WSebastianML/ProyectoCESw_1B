@@ -9,8 +9,10 @@ class Accion{
     private $precio;
     private $cantidad;
     private $costoTotal;
+    private $cambio;
+    private $ganancia;
 
-    protected static $columnasDB = ['id', 'nombre', 'fecha', 'precio', 'cantidad', 'costoTotal'];
+    protected static $columnasDB = ['id', 'nombre', 'fecha', 'precio', 'cantidad', 'costoTotal', 'cambio', 'ganancia'];
 
 
     public function __construct($args = [])
@@ -21,6 +23,8 @@ class Accion{
         $this->precio = $args['precio'] ?? '';
         $this->cantidad = $args['cantidad'] ?? '';
         $this->costoTotal = $args['costoTotal'] ?? '';
+        $this->cambio = $args['cambio'] ?? '';
+        $this->ganancia = $args['ganancia'] ?? '';
     }
 
     public function getId(){
@@ -45,6 +49,14 @@ class Accion{
 
     public function getCostoTotal(){
         return $this->costoTotal;
+    }
+
+    public function getCambio(){
+        return $this->cambio;
+    }
+
+    public function getGanancia(){
+        return $this->ganancia;
     }
 
     public static function setDB($baseDatos){
