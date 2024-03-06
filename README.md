@@ -43,9 +43,23 @@ El proyecto consiste en desarrollar un producto software que permita llevar un r
 | Numero | 5 |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Titulo | Eliminar acciones |
-| Descripcion | Como usuario, Deseo eliminar los registros de acciones previamente creadas Para = deshacerme de registros que considere inútiles o incorrectos de la tabla de acciones.|
+| Descripcion | Como usuario, Deseo eliminar los registros de acciones previamente creadas Para deshacerme de registros que considere inútiles o incorrectos de la tabla de acciones.|
 | Criterios de aceptacion | - Dado un registro mostrado en la tabla, al clicar el botón “eliminar” el registro ya no aparecerá en los registros de la tabla. |
 | Tareas | T1: Creación del botón eliminar dentro de la tabla. <br> T2: Dar estilo al botón eliminar mediante CSS. <br> T3: Creación del método eliminar con sentencia query |
+
+| Numero | 6 |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Titulo | Mostrar Cambio, Ganancia/Perdida |
+| Descripcion | Como usuario, Deseo ver el porcentaje de cambio y la ganancia o perdida de cada compra Para verificar los beneficios o perdidas de mis compras.|
+| Criterios de aceptacion | - Dada una compra, al mostrar la tabla, deberan verse los campos de porcentaje de cambio y el calculo de ganancia o perdida. |
+| Tareas | T1: Crear el campo de cambio y de ganancia/perdida en la base de datos. <br> T2: Crear el campo de cambio y de ganancia/perdida en la tabla mostrada. <br> T3: Crear el script que calcula el valor de los campos cambio y ganancia/perdida. |
+
+| Numero | 7 |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Titulo | Ordenar Registros |
+| Descripcion | Como usuario, Deseo ver los registros ordenados segun un campo de la tabla en especifico Para facilitar la interpretacion de los registros segun un orden a mi criterio.|
+| Criterios de aceptacion | - Dados varios registros en la tabla, al seleccionar el criterio de ordenamiento, deberan ordenarse los registros en la tabla segun le criterio seleccionado. |
+| Tareas | T1: Crear combo box con los criterios de ordenamiento. <br> T2: Crear el Boton que ordena los registros a partir de un criterio dado. <br> T3: Crear el script que ordena los registros y los muestra en la tabla. |
 
 ## Desarrollo
 
