@@ -81,8 +81,7 @@ class Accion{
         $symbol = str_replace(' ', '', $this->nombre);
         $apikey = 'IJ19FBSWXP4ZFYML';
         $url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=$symbol&apikey=$apikey";
-echo "$url";
-        //$json = file_get_contents($url);
+        $json = file_get_contents($url);
 
         $data = json_decode($json,true);
     
