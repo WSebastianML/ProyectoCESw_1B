@@ -9,10 +9,9 @@ class Accion{
     private $precio;
     private $cantidad;
     private $costoTotal;
-    private $cambio;
-    private $ganancia;
+    private $valorActual;
 
-    protected static $columnasDB = ['id', 'nombre', 'fecha', 'precio', 'cantidad', 'costoTotal', 'cambio', 'ganancia'];
+    protected static $columnasDB = ['id', 'nombre', 'fecha', 'precio', 'cantidad', 'costoTotal'];
 
 
     public function __construct($args = [])
@@ -23,8 +22,8 @@ class Accion{
         $this->precio = $args['precio'] ?? '';
         $this->cantidad = $args['cantidad'] ?? '';
         $this->costoTotal = $args['costoTotal'] ?? '';
-        $this->cambio = $args['cambio'] ?? '';
-        $this->ganancia = $args['ganancia'] ?? '';
+        $this->valorActual = 0;
+
     }
 
     public function getId(){
@@ -52,11 +51,54 @@ class Accion{
     }
 
     public function getCambio(){
-        return $this->cambio;
+     // Obtener el costo actual de la acción
+     $costoActual = $this->valorActual;
+
+     if (is_numeric($costoActual)) {
+         // Obtener el costo total de la acción al momento de la compra
+         $costoCompra = $this->costoTotal;
+ 
+         // Calcular la diferencia entre el costo actual y el costo de compra
+         $diferencia = $costoActual - $costoCompra;
+ 
+         // Calcular el porcentaje de cambio
+         if ($costoCompra != 0) {
+             $porcentajeCambio = ($diferencia / $costoCompra) * 100;
+ 
+             // Redondear el porcentaje de cambio a dos decimales
+             $porcentajeCambio = round($porcentajeCambio, 2);
+             return $porcentajeCambio;
+         } else {
+             return "No se puede calcular el cambio: el costo de compra es cero.";
+         }
+     } else {
+         return "No se puede calcular el cambio: no se pudo obtener el costo actual de la acción.";
+     }
+ 
     }
 
     public function getGanancia(){
-        return $this->ganancia;
+        $symbol = str_replace(' ', '', $this->nombre);
+        $apikey = 'IJ19FBSWXP4ZFYML';
+        $url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=$symbol&apikey=$apikey";
+echo "$url";
+        //$json = file_get_contents($url);
+
+        $data = json_decode($json,true);
+    
+  
+        if(isset($data['Global Quote']['05. price'])) {
+             // Extraer el precio de mercado regular de la respuesta
+             $price = $data['Global Quote']['05. price'];
+    
+            // Calcular el costo total de la acción
+              $costoActual = $this->cantidad * $price;
+              $this->valorActual = $costoActual;
+            return $costoActual;
+        } else {
+          // Devolver un mensaje de error si no se pueden obtener datos válidos
+          return "No se pudieron obtener datos para el símbolo $symbol";
+        }
     }
 
     public static function setDB($baseDatos){
