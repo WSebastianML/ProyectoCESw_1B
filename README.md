@@ -1,5 +1,5 @@
 # Proyecto - Construccion de Software - Grupo 7
-## Contenido
+## Tabla de Contenidos
 * [Preparación](#Preparación)
 * [Historias de Usuario](#Historias-de-Usuario)
 * [Desarrollo](#Desarrollo)
